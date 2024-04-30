@@ -5,10 +5,10 @@ Note: Inside the answer strings you can use Markdown format and also LaTeX
 math (delimited with $$).
 """
 
-student_name_1 = '' # string
-student_ID_1 = '' # string
-student_name_2 = '' # string
-student_ID_2 = '' # string
+student_name_1 = 'David Bendayan' # string
+student_ID_1 = '033530700' # string
+student_name_2 = 'Yonatan Greenshpan' # string
+student_ID_2 = '204266191' # string
 
 
 # ==============
@@ -143,41 +143,31 @@ This suggests that the model performs slightly worse on unseen data compared to 
 part3_q1 = r"""
 **Your answer:**
 
+1. In an ideal residual plot the pattern we should observe is a random scattering of points around the horizontal axis without any obvious trend or pattern centered around zero.  
 
-Write your answer using **markdown** and $\LaTeX$:
-```python
-# A code block
-a = 2
-```
-An equation: $e^{i\pi} -1 = 0$
-
+2. Based on the residual plots we have got, it seems that the model’s fit has improved after CV. In the TOP-5 features plot there is a clear pattern in the residuals, which suggests that the model might not be capturing some underlying patterns. The residuals do not appear to be randomly distributed around zero, which is a sign of a less well-fitted model. On the other hand, the residuals after CV are more randomly distributed around zero, indicating a good fit. This randomness suggests that the model is doing a good job of capturing the underlying patterns in the data, as we would expect to see if the errors (residuals) are randomly distributed.
 """
 
 part3_q2 = r"""
 **Your answer:**
 
+1. Yes, it is still a linear regression model. The term "linear" refers to the linearity of the parameters, not the features. Even if we add non-linear features (like polynomial features) to our data, the model is still linear as long as it's a linear combination of these features.
 
-Write your answer using **markdown** and $\LaTeX$:
-```python
-# A code block
-a = 2
-```
-An equation: $e^{i\pi} -1 = 0$
+2. While adding non-linear features can help us better fit the data, it doesn't mean we can fit any non-linear function. The ability to fit a function depends on the form of the function and the transformations we apply to the features. Some non-linear functions may not be well-approximated by the transformations we choose.
 
+3. Adding non-linear features to a linear regression model can change the decision boundary of the classifier to be nonlinear. when you add non-linear features, you’re essentially transforming the input space and as a result, the decision boundary can become non-linear, even though the model itself is still linear. For example, when adding $x_1 * x_2$ as an additional feature to $x_1$ and $x_2$ the boundary can be more hyperbolic like. 
 """
 
 part3_q3 = r"""
 **Your answer:**
 
+1. Using np.logspace instead of np.linspace can help us in several ways. In the context of hyperparameter tuning, using a logarithmic scale for $\lambda$ allows us to explore a wide range of values, spanning several orders of magnitude, with fewer samples. In addition, the logarithmic spacing of values ensures a more uniform distribution of samples across the range of $\lambda$. This is crucial for cross-validation because it helps ensure that the model is tested on a diverse set of hyperparameter values, leading to more robust performance estimation and better generalization to unseen data.
 
-Write your answer using **markdown** and $\LaTeX$:
-```python
-# A code block
-a = 2
-```
-An equation: $e^{i\pi} -1 = 0$
+2. In our code, the cross-validation is performed with k_folds=3, which means the dataset is divided into 3 folds. During each iteration of the cross-validation process, the model is trained on k-1 folds and validated on the remaining fold. This process is repeated for each fold, so the model is fitted a total of k times. Given that k_folds=3, the model is fitted 3 times during each iteration of the cross-validation process (training on 2 folds, validating on 1 fold). Since our CV is repeated for each combination of hyperparameters being tested and we tested the degrees (3) and lambdas (20) we get:
+ $$k \cdot (k - 1) \cdot \#lambdas \cdot \#dgrees = 3 \cdot 2 \cdot 20 \cdot 3= 360$$
 
 """
+
 
 # ==============
 
